@@ -2,6 +2,8 @@ FROM python:3.9.13-slim-buster
 
 WORKDIR /obopy
 COPY requirements.txt requirements.txt
+RUN apt-get update
+RUN apt-get install -y portaudio19-dev
 RUN pip3 install -r requirements.txt
 
 # copy python project files from local to /hello-py image working directory
