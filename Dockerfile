@@ -4,6 +4,7 @@ WORKDIR /obopy
 COPY requirements.txt requirements.txt
 RUN apt-get update
 RUN apt-get install -y portaudio19-dev
+RUN sudo apt-get install pyaudio
 RUN pip3 install -r requirements.txt
 
 # copy python project files from local to /hello-py image working directory
