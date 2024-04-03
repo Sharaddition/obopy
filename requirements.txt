@@ -1,4 +1,4 @@
 wit
 numpy
 openwakeword
-# PyAudio
+PyAudio
