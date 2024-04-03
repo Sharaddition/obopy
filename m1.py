@@ -1,13 +1,15 @@
 import time
 import pyaudio
 import numpy as np
-from wit import Wit
+import openwakeword
 from ai import ai
+from wit import Wit
 from wav import save_audio
 from openwakeword.model import Model
 from vad import SileroVoiceActivityDetector
 
 wit = Wit('ZVUD4TKFMZC3L2MXNEKNZFBBKJDBF63U')
+openwakeword.utils.download_models(['melspectrogram', 'embedding'])
 
 MODEL_NAME = 'hey_mycroft_v0.1'
 owwModel = Model(
