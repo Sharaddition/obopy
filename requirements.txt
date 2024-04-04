@@ -1,4 +1,5 @@
 wit
 numpy
+sounddevice
 openwakeword
 PyAudio
