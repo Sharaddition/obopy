@@ -13,12 +13,6 @@ import sounddevice as sd
 wit = Wit('ZVUD4TKFMZC3L2MXNEKNZFBBKJDBF63U')
 openwakeword.utils.download_models(['melspectrogram', 'embedding'])
 
-MODEL_NAME = 'hey_mycroft_v0.1'
-owwModel = Model(
-    wakeword_models=[f'models/{MODEL_NAME}.onnx'],
-    inference_framework='onnx'
-    )
-
 # Set parameters
 RATE = 16000
 CHUNK = 1280
@@ -35,8 +29,14 @@ MAX_SILENCE = 25
 
 stream2 = sd.InputStream(channels=CHANNELS, samplerate=RATE, dtype=np.int16, blocksize=CHUNK)
 
-
 vad = SileroVoiceActivityDetector()
+
+MODEL_NAME = 'hey_mycroft_v0.1'
+owwModel = Model(
+    wakeword_models=[f'models/{MODEL_NAME}.onnx'],
+    inference_framework='onnx'
+    )
+
 
 def listen_user(stm, MIN_VAD = 0.4, MAX_SILENCE = 25):
     silence = 0
