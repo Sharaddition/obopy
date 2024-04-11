@@ -1,11 +1,9 @@
 import wave
-import pyaudio
 
 # Set parameters
 RATE = 16000
 CHUNK = 1280
 CHANNELS = 1
-FORMAT = pyaudio.paInt16
 WAVE_OUTPUT_FILENAME = 'user.wav'
 
 def save_audio(frames, sample_size, fname = WAVE_OUTPUT_FILENAME):
