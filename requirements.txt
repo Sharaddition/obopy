@@ -1,3 +1,4 @@
 wit
 numpy
+websockets
 openwakeword
