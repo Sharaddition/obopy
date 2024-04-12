@@ -1,4 +1,4 @@
-FROM python:3.6.9-slim-buster
+FROM python:3.9.13-slim-buster
 WORKDIR /obopy
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
