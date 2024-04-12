@@ -98,9 +98,12 @@ def listen_user(MIN_VAD = 0.42, MAX_SILENCE = 25):
 
 
 async def start_server(port):
-    async with websockets.serve(receive_data, "localhost", port):
-        print("\033[92m OPEN:       Websocket \033[0m")
-        await asyncio.Future()  # Run the server indefinitely
+    try:
+        async with websockets.serve(receive_data, "localhost", port):
+            print("\033[92m OPEN:       Websocket \033[0m")
+            await asyncio.Future()  # Run the server indefinitely
+    except Exception as e:
+        print(f"Error starting server: {e}")
 
 async def main():
     # Choose a port number for your WebSocket server
@@ -113,5 +116,5 @@ async def main():
     await asyncio.gather(server_task)  # Wait for both server and printing to finish
     print("Server stopped.")
 
-if __name__ == "__main__":
-    asyncio.run(main())
+# if __name__ == "__main__":
+asyncio.run(main())
