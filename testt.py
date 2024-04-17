@@ -1,14 +1,15 @@
-import asyncio
-from websockets.server import serve
+import logging
+from websocket_server import WebsocketServer
 
-async def echo(websocket):
-    async for message in websocket:
-        print(f'Recieved msg: {message}')
-        await websocket.send(message)
+def new_client(client, server):
+	print(f"This client joimed us {client}")
+	server.send_message_to_all("Hey all, a new client has joined us")
 
-async def main():
-    async with serve(echo, "localhost", 6969):
-        print('Started server')
-        await asyncio.Future()  # run forever
+def new_msg(client, server, msg):
+    print(f"Message {msg}")
+    server.send_message_to_all(msg)
 
-asyncio.run(main())
+server = WebsocketServer(host='127.0.0.1', port=6969, loglevel=logging.INFO)
+server.set_fn_new_client(new_client)
+server.set_fn_message_received(new_msg)
+server.run_forever()

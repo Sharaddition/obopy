@@ -1,4 +1,5 @@
 wit
 numpy
 websockets
+websocket-server
 openwakeword
